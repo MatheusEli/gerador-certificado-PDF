@@ -36,7 +36,7 @@ app.get('/certificado/:nome', (req, res) => {
 
     });
     // The name
-    const name = req.params.nome;
+    const name = req.params.nome.replace("+"," ");
 
     // Pipe the PDF into an name.pdf file
     doc.pipe(fs.createWriteStream(`${name}.pdf`));
@@ -56,7 +56,6 @@ app.get('/certificado/:nome', (req, res) => {
 
     // Finalize the PDF and end the stream
     doc.end();
-
 });
 
 module.exports = router;
