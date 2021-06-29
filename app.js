@@ -54,6 +54,9 @@ app.get('/certificado/:nome', (req, res) => {
     // Draw the date
     doc.fontSize(19).fillColor('#23273a').text(moment().locale('pt-br').format("Do MMMM YYYY"), 50, 489);
 
+    // Draw the CEO
+    doc.fontSize(25).fillColor('#23273a').text('Gilberto Rissato', 290, 489);
+
     // Finalize the PDF and end the stream
     doc.end();
 });
