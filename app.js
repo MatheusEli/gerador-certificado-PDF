@@ -36,7 +36,7 @@ app.get('/certificado/:nome', (req, res) => {
 
     });
     // The name
-    const name = req.params.nome.replace("+"," ");
+    const name = req.params.nome.replace("%20"," ");
 
     // Pipe the PDF into an name.pdf file
     doc.pipe(fs.createWriteStream(`${name}.pdf`));
@@ -49,10 +49,10 @@ app.get('/certificado/:nome', (req, res) => {
     doc.font("fonts/PinyonScript-Regular.ttf");
 
     // Draw the name
-    doc.fontSize(75).fillColor('#b2782a').text(name, 40, 245);
+    doc.fontSize(75).fillColor('#b2782a').text(name, 55, 245);
 
     // Draw the date
-    doc.fontSize(19).fillColor('#23273a').text(moment().locale('pt-br').format("Do MMMM YYYY"), 30, 499);
+    doc.fontSize(19).fillColor('#23273a').text(moment().locale('pt-br').format("Do MMMM YYYY"), 50, 489);
 
     // Finalize the PDF and end the stream
     doc.end();
